@@ -1,13 +1,12 @@
 version: '3'
 services:
     web:
-        image: webdevops/php-apache-dev:ubuntu-16.04
+        image: ${UBUNTU_APACHE_PHP_IMAGE}
         container_name: web
         restart: always
-        user: application
         environment:
           - WEB_ALIAS_DOMAIN=local.domain.com
-          - WEB_DOCUMENT_ROOT=/app/pub
+          - WEB_DOCUMENT_ROOT=/var/www/html/public
           - PHP_DATE_TIMEZONE=EST
           - PHP_DISPLAY_ERRORS=1
           - PHP_MEMORY_LIMIT=2048M
@@ -15,7 +14,7 @@ services:
           - PHP_POST_MAX_SIZE=500M
           - PHP_UPLOAD_MAX_FILESIZE=1024M
         volumes:
-          - /var/www/html/magento:/app:cached
+          - ./${MAGENTO_ROOT}:/var/www/html/public
         ports:
           - "80:80"
           - "443:443"
@@ -23,14 +22,14 @@ services:
         links:
           - mysql
     mysql:
-        image: mariadb:10
+        image: ${MYSQL_IMAGE}
         container_name: mysql
         restart: always
         ports:
           - "3306:3306"
         environment:
-          - MYSQL_ROOT_PASSWORD=root
-          - MYSQL_DATABASE=magento
+          - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+          - MYSQL_DATABASE=${DB_NAME}
         volumes:
           - db-data:/var/lib/mysql
     phpmyadmin:
@@ -38,15 +37,16 @@ services:
         restart: always
         image: phpmyadmin/phpmyadmin:latest
         environment:
-          - MYSQL_ROOT_PASSWORD=root
-          - PMA_USER=root
-          - PMA_PASSWORD=root
+          - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+          - PMA_USER=${PMA_USER}
+          - PMA_PASSWORD=${PMA_PASSWORD}
         ports:
           - "8080:80"
         links:
           - mysql:db
         depends_on:
           - mysql
+
 volumes:
     db-data:
         external: false
