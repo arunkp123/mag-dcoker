@@ -1,4 +1,4 @@
 ### MAG-DOCKER
 
 ## Intro
-Install magento2 with docker
+This setup will help you to setup a required magento2 environment for development.
