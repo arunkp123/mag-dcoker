@@ -13,7 +13,9 @@ $ cd docker-magento2
 $ sh setup.sh
 ```
 ```Note: In the above command, you can replace [docker-magento2] with directory name you want for the project to be cloned to.```
+
 Once this setup is completed, go to terminal and enter below command to check if the docker containers are ready
+
 ```
 $ docker ps
 ```
@@ -41,7 +43,7 @@ After you enter the username and password, composer will install all the package
 Once done, run below command
 
 ```
-php bin/magento setup:install --admin-firstname=Admin --admin-lastname=User --admin-email=test@test.com --admin-user=admin --admin-password=Passw0rd@123 --base-url=http://local.magento.com --base-url-secure=https://local.magento.com --backend-frontname=admin --db-host=mysql --db-name=magento --db-user=root --db-password=root --use-rewrites=1 --language=en_US --currency=USD --timezone=America/New_York --use-secure-admin=1 --admin-use-security-key=1 --session-save=files --use-sample-data
+$ php bin/magento setup:install --admin-firstname=Admin --admin-lastname=User --admin-email=test@test.com --admin-user=admin --admin-password=Passw0rd@123 --base-url=http://local.magento.com --base-url-secure=https://local.magento.com --backend-frontname=admin --db-host=mysql --db-name=magento --db-user=root --db-password=root --use-rewrites=1 --language=en_US --currency=USD --timezone=America/New_York --use-secure-admin=1 --admin-use-security-key=1 --session-save=files --use-sample-data
 ````
 You may change the below variable values in the above command:
 ```admin-firstname
@@ -86,7 +88,7 @@ In the above configuration you may need to replace value of `ServerName` with th
 
 Restart apache: 
 ```
-service apache2 restart
+$ service apache2 restart
 ```
 You may now exit from the web container with `exit` command.
 Now add the ServerName to the system hosts file:
@@ -138,6 +140,7 @@ composer create-project--repository-url=https://repo.magento.com/magento/project
 ```
 You will be asked for ```username```/```password``` after above command.
 Username/password is basically the ```publicKey```/```privateKey``` which is available or you may need to create one here: https://marketplace.magento.com/customer/accessKeys/
+
 After you enter the username and password, composer will install all the package dependencies for magento2.
 Once done, run below command
 
