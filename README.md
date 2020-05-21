@@ -8,7 +8,7 @@ arunkp03/apache2.4.18-php7.2.5-magento2.3.5:v1
 ___
 ### Installation steps
 ```
-$ git clone https://github.com/arunkp123/mag-docker.git docker-magento2```
+$ git clone https://github.com/arunkp123/mag-docker.git docker-magento2
 $ cd docker-magento2
 $ sh setup.sh
 ```
@@ -38,7 +38,8 @@ $ cd public
 $ composer create-project--repository-url=https://repo.magento.com/magento/project-community-edition magento
 ```
 You will be asked for ```username```/```password``` after above command.
-Username/password is basically the ```publicKey```/```privateKey``` which is available or you may need to create one here: https://marketplace.magento.com/customer/accessKeys/
+Username/password is basically the ```publicKey```/```privateKey``` which is available or you may need to create one here: https://marketplace.magento.com/customer/accessKeys/ .
+
 After you enter the username and password, composer will install all the package dependencies for magento2.
 Once done, run below command
 
@@ -46,7 +47,8 @@ Once done, run below command
 $ php bin/magento setup:install --admin-firstname=Admin --admin-lastname=User --admin-email=test@test.com --admin-user=admin --admin-password=Passw0rd@123 --base-url=http://local.magento.com --base-url-secure=https://local.magento.com --backend-frontname=admin --db-host=mysql --db-name=magento --db-user=root --db-password=root --use-rewrites=1 --language=en_US --currency=USD --timezone=America/New_York --use-secure-admin=1 --admin-use-security-key=1 --session-save=files --use-sample-data
 ````
 You may change the below variable values in the above command:
-```admin-firstname
+```
+admin-firstname
 admin-lastname
 admin-email
 admin-user
@@ -55,6 +57,7 @@ base-url
 base-url-secure
 ```
 Once this is successfully done, it's time to install the sample data if you need or you may skip this command.
+
 ```php bin/magento sampledata:deploy```
 
 After all the above steps its time to clear all the cache:
@@ -99,7 +102,7 @@ Now add the ServerName to the system hosts file:
 2. In windows, open `c:\windows\system32\drivers\etc\hosts` with administrator permission and add below line:
 `127.0.0.1 local.magento.com`
 
-Now you should be able to access your site on http://local.magento.com and admin section can be accessed using http://local.magento.com/admin
+Now you should be able to access your site on `http://local.magento.com` and admin section can be accessed using `http://local.magento.com/admin`
 
 I hope this guide helped you to setup magento2 smoothly on your machine. 
 #### Thanks for trying this! ####
