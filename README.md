@@ -30,10 +30,10 @@ From a new terminal tab enter below command to move into the web container to ac
 $ docker exec -it web bash
 ```
 You will enter into web container linux box at ```/var/www/html/```
-```root@[CONTAINER_ID]:/var/www/html#```
 Now run below commands
 ```
-composer create-project--repository-url=https://repo.magento.com/magento/project-community-edition magento
+$ cd public
+$ composer create-project--repository-url=https://repo.magento.com/magento/project-community-edition magento
 ```
 You will be asked for ```username```/```password``` after above command.
 Username/password is basically the ```publicKey```/```privateKey``` which is available or you may need to create one here: https://marketplace.magento.com/customer/accessKeys/
@@ -57,12 +57,12 @@ Once this is successfully done, it's time to install the sample data if you need
 
 After all the above steps its time to clear all the cache:
 ```
-php bin/magento cache:flush
-php bin/magento cache:clean
+$ php bin/magento cache:flush
+$ php bin/magento cache:clean
 ```
 It's time now to make apache access our magento project at some domain:
 ```
-vi /etc/apache2/sites-enabled/000-default.conf
+$ vi /etc/apache2/sites-enabled/000-default.conf
 ```
 Replace below in the above file
 ```
