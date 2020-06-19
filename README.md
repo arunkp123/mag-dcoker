@@ -1,5 +1,7 @@
 # Mag-Docker
 ##### Installs magento2.3.5 prerequisites.
+###### Tested on MacOS Mojave
+
 Docker images used:
 ```
 arunkp03/mariadb-10.4.12:v1
